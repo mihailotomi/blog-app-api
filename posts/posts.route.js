@@ -62,7 +62,6 @@ router.route("/").patch(async (req, res, next) => {
       id: req.body.id,
       title: req.body.title,
       content: req.body.content,
-      date: new Date(),
     });
 
     res.json(response);

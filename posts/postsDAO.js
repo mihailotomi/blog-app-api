@@ -66,9 +66,9 @@ export default class PostsDAO {
     }
   }
 
-  static async updatePost({ id, date, title, content }) {
+  static async updatePost({ id, title, content }) {
     try {
-      const updated = { createdAt: date };
+      const updated = {};
       if (title) {
         updated.title = title;
       }
