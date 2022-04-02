@@ -20,7 +20,7 @@ export default class PostsDAO {
     page = 0,
     filters = null,
     sortBy = "createdAt",
-    sortOrder = 1,
+    sortOrder,
   } = {}) {
     let query;
 
@@ -32,7 +32,7 @@ export default class PostsDAO {
       }
     }
     try {
-      console.log(sortBy);
+      console.log(sortOrder);
       const cursor = await posts
         .find(query)
         .limit(postsPerPage)
