@@ -9,6 +9,8 @@ router.route("/").get(async (req, res, next) => {
     : 10;
 
   const page = req.query.page ? parseInt(req.query.page) : 0;
+  const sortBy = req.query.sortBy ? req.query.sortBy : "createdAt";
+  const sortOrder = req.query.sortOrder ? parseInt(req.query.sortOrder) : 1;
 
   let filters = {};
   if (req.query.type) {
@@ -21,6 +23,8 @@ router.route("/").get(async (req, res, next) => {
     postsPerPage,
     page,
     filters,
+    sortBy,
+    sortOrder,
   });
 
   let response = {

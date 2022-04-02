@@ -15,7 +15,13 @@ export default class PostsDAO {
     }
   }
 
-  static async getPosts({ postsPerPage = 10, page = 0, filters = null } = {}) {
+  static async getPosts({
+    postsPerPage = 10,
+    page = 0,
+    filters = null,
+    sortBy = "createdAt",
+    sortOrder = 1,
+  } = {}) {
     let query;
 
     if (filters) {
@@ -25,12 +31,13 @@ export default class PostsDAO {
         query = { type: { $eq: filters["type"] } };
       }
     }
-
     try {
+      console.log(sortBy);
       const cursor = await posts
         .find(query)
         .limit(postsPerPage)
-        .skip(page * postsPerPage);
+        .skip(page * postsPerPage)
+        .sort({ [sortBy]: sortOrder });
 
       const postList = await cursor.toArray();
       const postCount = await posts.countDocuments();
