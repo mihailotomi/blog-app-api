@@ -93,6 +93,8 @@ export default class PostsDAO {
   static async deletePost({ id, userId }) {
     try {
       return await posts.deleteOne({ _id: ObjectId(id), userId });
-    } catch (e) {}
+    } catch (e) {
+      return { error: e.message };
+    }
   }
 }
