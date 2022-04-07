@@ -91,7 +91,7 @@ router.route("/").delete(async (req, res, next) => {
         "unable to update review. User may not be original poster"
       );
     }
-    res.json({ _id, status: "success" });
+    res.json({ id, status: "success" });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
