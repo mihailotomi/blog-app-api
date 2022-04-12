@@ -16,7 +16,7 @@ export default class PostsDAO {
   }
 
   static async getPosts({
-    postsPerPage = 10,
+    postsPerPage = 12,
     page = 0,
     filters = null,
     sortBy = "createdAt",
@@ -32,7 +32,6 @@ export default class PostsDAO {
       }
     }
     try {
-      console.log(sortOrder);
       const cursor = await posts
         .find(query)
         .limit(postsPerPage)

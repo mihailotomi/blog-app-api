@@ -6,7 +6,7 @@ const router = express.Router();
 router.route("/").get(async (req, res, next) => {
   const postsPerPage = req.query.postsPerPage
     ? parseInt(req.query.postsPerPage)
-    : 10;
+    : 12;
 
   const page = req.query.page ? parseInt(req.query.page) : 0;
   const sortBy = req.query.sortBy ? req.query.sortBy : "createdAt";
